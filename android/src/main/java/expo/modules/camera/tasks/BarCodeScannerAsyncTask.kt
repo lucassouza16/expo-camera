@@ -19,8 +19,9 @@ class BarCodeScannerAsyncTask(
 
   override fun onPostExecute(result: BarCodeScannerResult?) {
     super.onPostExecute(result)
-    result?.let {
-      delegate.onBarCodeScanned(result)
-    } ?: delegate.onBarCodeScanningTaskCompleted()
+    if (result != null) {
+      delegate.onBarCodeScanned(result);
+    }
+    delegate.onBarCodeScanningTaskCompleted();
   }
 }
